@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:os="http://www.mulesoft.org/schema/mule/os" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd">
+	
+	<flow name="getProductDetailsFlow" doc:id="200a908f-d7bd-4bec-99c2-f3fe7257163a" >
+		<http:request method="GET" doc:name="Walmart API Request" doc:id="6deb8dea-387d-42fe-9066-02f3a49a7009" config-ref="HTTP_Request_configuration" requestStreamingMode="NEVER" path="${http.path}">
+			<http:headers ><![CDATA[#[output application/java
+---
+{
+	'x-rapidapi-key' : 'cd17061f01msh293392993c512b0p18427ajsn4f1b9c0ed5d8'
+}]]]></http:headers>
+			<http:query-params ><![CDATA[#[output application/java
+---
+{
+	"usItemId" : vars.httpVar
+}]]]></http:query-params>
+		</http:request>
+		<ee:transform doc:name="Transform Message" doc:id="71febee4-4216-4f14-a395-be35799cde91" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+type Currency = String { format: "\$#,###.00"}
+---
+
+{
+	manufacturerName: payload.data.productByProductIdHolidays.productAttributes.manufacturerName default "",
+	productID: payload.data.productByProductIdHolidays.productId,
+	productName: payload.data.productByProductIdHolidays.productAttributes.productName,
+	productType: payload.data.productByProductIdHolidays.productType,
+	pricePerUnit: payload.data.productByProductIdHolidays.offerList.pricesInfo.prices.current.price[0] as String ++ payload.data.productByProductIdHolidays.offerList.pricesInfo.prices.current.currencyUnitSymbol[0] as String,
+	maxOrderLimit: payload.data.productByProductIdHolidays.offerList.offerInfo.quantityOptions.orderLimit[0] as Number,
+	availabilityStatus: payload.data.productByProductIdHolidays.offerList.productAvailability.availabilityStatus[0] as String,
+	sellers: payload.data.productByProductIdHolidays.sellerList map ( sellerList , indexOfSellerList ) -> {
+		sellerName: sellerList.sellerName,
+		sellerDisplayName: sellerList.sellerDisplayName,
+		sellerPhone: 9123467897,
+		sellerEmail: 'walmartdelivery@walmartapi.com',
+		sellerId: sellerList.sellerId,
+		sellerType: sellerList.sellerType
+	}
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<error-handler >
+			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="a028b873-ee6c-4943-80ad-2e85b36857ac" type="HTTP:INTERNAL_SERVER_ERROR, HTTP:NOT_FOUND">
+				<set-payload value='#["Host Rapid Api not responding"]' doc:name="Set Payload" doc:id="01c75da5-c487-4c85-9cfc-0daae5a0792d" />
+			</on-error-propagate>
+		</error-handler>
+	</flow>
+	<flow name="getStoreDetailsFlow" doc:id="d249335d-e87d-4331-b7c9-81fca93d2884" >
+		<set-variable value="#[100]" doc:name="minDistance" doc:id="f352bcfc-cf1e-4730-a207-5cb8201f639b" variableName="minDistance" />
+		<set-variable doc:name="address" doc:id="ec15a642-5ee3-4bd6-ba00-6d3a6ebd23dc" variableName="address" value='#[""]'/>
+		<http:request method="GET" doc:name="Walmart API Request" doc:id="e70af14a-db0c-4567-a4ac-b9793334448d" config-ref="HTTP_Request_configuration" path="/stores/list">
+			<http:body ><![CDATA[#[output application/json
+---
+payload]]]></http:body>
+			<http:headers><![CDATA[#[output application/java
+---
+{
+	'x-rapidapi-key' : 'cd17061f01msh293392993c512b0p18427ajsn4f1b9c0ed5d8'
+}]]]></http:headers>
+			<http:query-params><![CDATA[#[output application/java
+---
+{
+	"postalCode" : vars.httpVar
+}]]]></http:query-params>
+		</http:request>
+		<foreach doc:name="For Each" doc:id="bc2cbde6-f9d8-49b7-b96f-b44b786921ce" collection="#[payload.data.storesBySearchTerm.stores]">
+			<set-variable value="#[payload.distance]" doc:name="distance" doc:id="1ef4e921-3de5-4ffa-b6ed-95193fbdb38e" variableName="distance"/>
+			<choice doc:name="Choice" doc:id="3e863a47-d5dd-414e-a085-c5a2dec7d756" >
+				<when expression="#[vars.distance &lt; vars.minDistance]">
+					<set-variable value="#[vars.Distance]" doc:name="minDistance" doc:id="41a90bd4-3800-450c-bc8b-19d0986e66ab" variableName="minDistance" />
+					<set-variable value="#[payload.address]" doc:name="address" doc:id="e2531f0f-8e6c-4124-85aa-d975a58a5141" variableName="address" />
+				</when>
+				<otherwise >
+					<set-payload value='#["No store within 100Km"]' doc:name="Set Payload" doc:id="5957f464-f40c-482e-9bd6-85b3dae8f44b" />
+				</otherwise>
+			</choice>
+		</foreach>
+		<ee:transform doc:name="Transform Message" doc:id="b0bf096e-cb48-410c-adb2-ee04c87ca83f">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+//address:payload.data.storesBySearchTerm.stores[0].address.address ++ "," ++ 
+//payload.data.storesBySearchTerm.stores[0].address.city ++ "," ++ 
+//payload.data.storesBySearchTerm.stores[0].address.state ++ "," ++
+//payload.data.storesBySearchTerm.stores[0].address.country ++ "(" ++
+//payload.data.storesBySearchTerm.stores[0].address.postalCode ++ ")"
+address:vars.address.address ++ "," ++ 
+vars.address.city ++ "," ++ 
+vars.address.state ++ "," ++
+vars.address.country ++ "(" ++
+vars.address.postalCode ++ ")"
+
+]]></ee:set-payload>
+			</ee:message>
+			<ee:variables>
+				<ee:set-variable variableName="distance"><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-variable>
+			</ee:variables>
+		</ee:transform>
+		<error-handler >
+			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="17ca7ef0-de77-4d0b-b858-8e89aae66d60" type="HTTP:INTERNAL_SERVER_ERROR, HTTP:NOT_FOUND" >
+				<set-payload value='#["Host Rapid Api not responding"]' doc:name="Set Payload" doc:id="73736626-f3ad-43c2-9f06-ce8166dd0f65" />
+			</on-error-propagate>
+		</error-handler>
+	</flow>
+	<flow name="postProduct" doc:id="e1510b6d-12eb-4641-99ad-d125fd78cb62" >
+		<db:insert doc:name="Insert" doc:id="e61879cd-1cda-4feb-b533-b30169e3b7ff" config-ref="Database_Config">
+			<db:sql><![CDATA[INSERT INTO products
+VALUES(:order_id,:store_id,:store_name,:store_address,:store_distance,:store_contact_number,:product_type_id,:quantity)]]></db:sql>
+			<db:input-parameters><![CDATA[#[{order_id: payload.order_id,
+	store_id: payload.store_id,
+	store_name: payload.store_name,
+	store_address: payload.store_address,
+	store_distance: payload.store_distance,
+	store_contact_number: payload.store_contact_number,
+	product_type_id: payload.product_type_id,
+	quantity: payload.quantity
+}]]]></db:input-parameters>
+		</db:insert>
+		<set-payload value='#["Product Inserted Successfully"]' doc:name="Set Payload" doc:id="2c406f8c-a47c-4c9f-a2e1-ba9f20fa781a" />
+		<error-handler >
+			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="73ad923d-2da5-4849-a751-7288fd6f2e47" type="DB:CONNECTIVITY">
+				<set-variable value="#[503]" doc:name="httpStatus" doc:id="27cbeaf6-3456-483f-8401-019836de4378" variableName="httpStatus" />
+				<set-payload value='#["Cannot Connect to Database"]' doc:name="Set Payload" doc:id="ad44f6aa-251c-4a59-9389-75dec32ea72c" />
+			</on-error-propagate>
+			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="0bf1049b-12ec-465b-a2cb-6c9c88638825" type="DB:QUERY_EXECUTION">
+				<set-variable value="#[409]" doc:name="httpStatus" doc:id="62e02555-7a2e-417b-974a-5df88f6e30be" variableName="httpStatus"/>
+				<set-payload value='#["Product Already Inserted!"]' doc:name="Set Payload" doc:id="c98ba0f2-8a29-4a96-8e1c-79453a394a9c" />
+			</on-error-propagate>
+		</error-handler>
+	</flow>
+</mule>

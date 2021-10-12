@@ -1,0 +1,21 @@
+#%RAML 1.0 Library
+
+types:
+  product: !include Datatypes/product.raml
+  postProduct: !include Datatypes/postProduct.raml
+
+traits:
+  client_id_required:
+    headers:
+      client_id: 
+        type: string
+        required: true
+      client_secret:
+        type: string
+        required: true
+
+securitySchemes:
+  basic:
+    description: |
+      This API supports Basic Authentication.
+    type: Basic Authentication
