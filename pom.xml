@@ -43,7 +43,7 @@
 						<workers>1</workers>
 						<environment>Sandbox</environment>
 						<applicationName>walmart-delivery</applicationName>
-						<businessGroup>apisero</businessGroup>
+						<businessGroup>Apisero</businessGroup>
 						<workerType>Micro</workerType>
 						<objectStoreV2>true</objectStoreV2>
 					</cloudHubDeployment>
