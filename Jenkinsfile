@@ -1,7 +1,6 @@
 pipeline {
   agent any
-  environment {
-    //Testing
+  environment {     
     DEPLOY_CREDS = credentials('deploy-anypoint-user')
     MULE_VERSION = '4.4.0'
     BG = "Apisero"
