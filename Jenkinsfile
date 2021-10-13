@@ -1,8 +1,5 @@
 pipeline {
   agent any
-  options {
-    clean before checkout
-  }
   environment {   //comment     
     DEPLOY_CREDS = credentials('deploy-anypoint-user')
     MULE_VERSION = '4.4.0'
