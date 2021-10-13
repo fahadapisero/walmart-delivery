@@ -4,7 +4,7 @@ pipeline {
     //Testing
     DEPLOY_CREDS = credentials('deploy-anypoint-user')
     MULE_VERSION = '4.4.0'
-    BG = "apisero"
+    BG = "Apisero"
     WORKER = "Micro"
   }
   stages {
