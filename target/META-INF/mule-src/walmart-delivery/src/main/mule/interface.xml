@@ -5,15 +5,7 @@
     </http:listener-config>
     <apikit:config name="walmartdelivery-config" api="walmartdelivery.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
     <flow name="walmartdelivery-main">
-        <http:listener config-ref="walmartdelivery-httpListenerConfig" path="/api/*">
-            <http:response statusCode="#[vars.httpStatus default 200]">
-                <http:headers>#[vars.outboundHeaders default {}]</http:headers>
-            </http:response>
-            <http:error-response statusCode="#[vars.httpStatus default 500]">
-                <http:body>#[payload]</http:body>
-                <http:headers>#[vars.outboundHeaders default {}]</http:headers>
-            </http:error-response>
-        </http:listener>
+        <http:listener doc:id="73fc5396-5eda-49e9-973d-54f3048f1606" config-ref="walmartdelivery-httpListenerConfig" path="/api/*"/>
         <apikit:router config-ref="walmartdelivery-config" />
         <error-handler>
             <on-error-propagate type="APIKIT:BAD_REQUEST">
