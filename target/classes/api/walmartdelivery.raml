@@ -1,0 +1,67 @@
+#%RAML 1.0
+title: WalmartDelivery
+description: To get and insert details of products and stores at Walmart.
+
+uses:
+  mylib: library.raml
+
+/productdetails:  
+    get:
+      is: [mylib.client_id_required]
+      displayName: Get Product Details
+      queryParameters:
+        usItemId:
+          displayName: Unique Store Item ID
+          required: true
+          type: string
+      responses:
+        200:
+          body:
+           application/json:
+             type: mylib.product
+             examples:
+               output: !include Examples/productDetails.raml
+
+/storedetails:
+  get:
+    is: [mylib.client_id_required]
+    displayName: Get Store Details
+    queryParameters:
+      postalCode:
+        type: integer
+        required: true
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {
+                "address": "6185 Retail Rd, Dallas, TX, US (75231)"
+              }
+
+/insertproduct:
+  post:
+    securedBy:
+      - mylib.basic
+    body:
+      application/json:
+        type: mylib.postProduct
+        examples:
+          input: !include Examples/insertProduct.raml
+    responses:
+      201:
+        body:
+          text/plain:
+            example:
+              {Success Message: Product Inserted} 
+      
+      400:
+        body:
+          text/plain:
+            example:
+              {Failure Message: Operation Failed. Check the body}
+
+        
+    
+            
+      

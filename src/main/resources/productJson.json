@@ -1,0 +1,27 @@
+{
+  "manufacturerName": "Norton",
+  "productID": "123abd",
+  "productName": "Norton 360 Deluxe, Antivirus",
+  "productType": "Antivirus",
+  "pricePerUnit": "49$",
+  "maxOrderLimit": 12,
+  "availabilityStatus": "In_Stock",
+  "sellers": [
+    {
+      "sellerName": "Hakimi Inc.",
+      "sellerDisplayName": "FunDeals",
+      "sellerPhone": 7472623332,
+      "sellerEmail": "hakimiarmin@gmail.com",
+      "sellerId": "DD9D6C546FB54A89A1324B66CF5F416B",
+      "sellerType": "EXTERNAL"
+    },
+    {
+      "sellerName": "Gaming Palace Distribution Inc",
+      "sellerDisplayName": "Gaming Palace Distribution Inc",
+      "sellerPhone": 5624124530,
+      "sellerEmail": "walmart@gamingpalacedistribution.com",
+      "sellerId": "C7F3DFA55E2546469F97EA1BCB868896",
+      "sellerType": "EXTERNAL"
+    }
+  ]
+}

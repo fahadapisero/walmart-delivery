@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="interface-suite.xml" />
+	<munit:test name="UT04-Interface-productdetails:walmartdelivery" doc:id="33692779-5ed3-4db0-8a4d-6e665dab890b" >
+		<munit:behavior >
+			<munit-tools:spy doc:name="Spy httpVar" doc:id="abbcfa08-30d2-4377-99a0-c28305e2aff0" processor="set-variable">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="eb1828cb-7b28-419a-8c3f-f4e7ddd04eec" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:before-call >
+					<munit-tools:assert doc:name="Assert attributes" doc:id="41ef0f32-a5a9-4ecf-bd85-87d3c046c3e8" message="The attributes do not match">
+						<munit-tools:that ><![CDATA[#[%dw 2.0
+import UT04Interfaceproductdetailswalmartdelivery::spy_assert_attributes
+---
+spy_assert_attributes::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+					</munit-tools:assert>
+				</munit-tools:before-call>
+				<munit-tools:after-call >
+					<munit-tools:assert doc:name="Assert attributes" doc:id="7a8402fd-1f74-408c-965b-30dcd696a980" message="The attributes do not match">
+						<munit-tools:that ><![CDATA[#[%dw 2.0
+import UT04Interfaceproductdetailswalmartdelivery::spy_assert_attributes1
+---
+spy_assert_attributes1::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+					</munit-tools:assert>
+				</munit-tools:after-call>
+			</munit-tools:spy>
+			<munit:set-event doc:name="Set Input" doc:id="1cd75f6b-c29e-46be-8b67-a04ccf635fc7" >
+				<munit:payload value="#[readUrl('classpath://UT04Interfaceproductdetailswalmartdelivery\set-event_payload.dwl')]" encoding="UTF-8" />
+				<munit:attributes value="#[readUrl('classpath://UT04Interfaceproductdetailswalmartdelivery\set-event_attributes.dwl')]" />
+				<munit:variables >
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://UT04Interfaceproductdetailswalmartdelivery\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to get:\productdetails:walmartdelivery-config" doc:id="3502fecc-5c5c-46be-9ef0-2e5da2fdf5e2" name="get:\productdetails:walmartdelivery-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="1effbe4f-c256-410f-a723-7098aa45cf01" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import UT04Interfaceproductdetailswalmartdelivery::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+			<munit-tools:verify-call doc:name="Verify httpVar" doc:id="caa6aed6-e518-47f9-bc30-7d959e671756" processor="set-variable" times="1">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="eb1828cb-7b28-419a-8c3f-f4e7ddd04eec" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="UT05Interface-get:\storedetails:walmartdelivery" doc:id="34ccb3f6-6911-4b23-8ec5-440d66de8649" ignore="true">
+		<munit:behavior >
+			<munit-tools:spy doc:name="Spy getStoreDetailsFlow" doc:id="e75fcfcd-9a11-4c87-b2dc-aeb6aa3f6c50" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="5f5c9aa4-f7a8-480e-82e1-fc88fa7a49a3" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:before-call >
+					<munit-tools:assert doc:name="Assert payload" doc:id="1d226997-50f5-4cb1-b524-fdde1f295c46" message="The payload does not match">
+						<munit-tools:that ><![CDATA[#[%dw 2.0
+import UT05Interfacegetstoredetailswalmartdelivery::spy_assert_payload
+---
+spy_assert_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+					</munit-tools:assert>
+				</munit-tools:before-call>
+				<munit-tools:after-call >
+					<munit-tools:assert doc:name="Assert variables" doc:id="ccefcaf6-abce-44d7-ac40-4d509f196ff9" message="The variables do not match">
+						<munit-tools:that ><![CDATA[#[%dw 2.0
+import UT05Interfacegetstoredetailswalmartdelivery::spy_assert_variables
+---
+spy_assert_variables::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+					</munit-tools:assert>
+				</munit-tools:after-call>
+			</munit-tools:spy>
+			<munit:set-event doc:name="Set Input" doc:id="9a72c15d-e1f3-49d5-b72b-db9acd95badd" >
+				<munit:payload value="#[readUrl('classpath://UT05Interfacegetstoredetailswalmartdelivery\set-event_payload.dwl')]" encoding="UTF-8" />
+				<munit:attributes value="#[readUrl('classpath://UT05Interfacegetstoredetailswalmartdelivery\set-event_attributes.dwl')]" />
+				<munit:variables >
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://UT05Interfacegetstoredetailswalmartdelivery\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to get:\storedetails:walmartdelivery-config" doc:id="c1b9f45a-7385-449d-b7a9-7ad3ff12ee24" name="get:\storedetails:walmartdelivery-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="292a4433-6b23-4ec9-b8c9-d308a024f9be" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import UT05Interfacegetstoredetailswalmartdelivery::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+			<munit-tools:verify-call doc:name="Verify getStoreDetailsFlow" doc:id="9be80ce6-27d0-4d90-8e03-676aea2f5697" processor="flow-ref" times="1">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="5f5c9aa4-f7a8-480e-82e1-fc88fa7a49a3" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="UT06-Interface-post:\insertproduct:application\json:walmartdelivery" doc:id="ddf02947-47a4-4efb-9b25-3b244d69bb29" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock postProduct Flow" doc:id="3c449640-3402-449f-b90a-0b7b18071e7d" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="69d5c2a1-f2cd-4675-b9dd-14fda6ae6b8c" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/java --- readUrl('classpath://UT06Interfacepostinsertproductapplicationjsonwalmartdelivery\mock_payload.dwl')]" mediaType="application/java" encoding="UTF-8" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://UT06Interfacepostinsertproductapplicationjsonwalmartdelivery\mock_variable_.dwl')]" />
+						<munit-tools:variable key="orderID" value="#[output application/json --- readUrl('classpath://UT06Interfacepostinsertproductapplicationjsonwalmartdelivery\mock_variable_1.dwl')]" mediaType="application/json" encoding="UTF-8" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit-tools:mock-when doc:name="Mock orderID" doc:id="309c9b98-aa46-4727-b176-25283477c054" processor="set-variable">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="5bbfdc62-d371-41c5-81f4-7863e845c808" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://UT06Interfacepostinsertproductapplicationjsonwalmartdelivery\mock_variable_2.dwl')]" />
+						<munit-tools:variable key="orderID" value="#[output application/json --- readUrl('classpath://UT06Interfacepostinsertproductapplicationjsonwalmartdelivery\mock_variable_3.dwl')]" mediaType="application/json" encoding="UTF-8" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="325e79c0-9779-4162-aef4-0e15a5a73cb3" >
+				<munit:payload value="#[output application/json --- readUrl('classpath://UT06Interfacepostinsertproductapplicationjsonwalmartdelivery\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://UT06Interfacepostinsertproductapplicationjsonwalmartdelivery\set-event_attributes.dwl')]" />
+				<munit:variables >
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://UT06Interfacepostinsertproductapplicationjsonwalmartdelivery\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to post:\insertproduct:application\json:walmartdelivery-config" doc:id="3df351af-5ab6-4df6-86aa-1a974463b0c8" name="post:\insertproduct:application\json:walmartdelivery-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="946b29bb-41f2-42ae-a573-6f0fc74ac96a" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import UT06Interfacepostinsertproductapplicationjsonwalmartdelivery::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>

@@ -1,0 +1,858 @@
+{
+  "data": {
+    "storesBySearchTerm": {
+      "stores": [
+        {
+          "distance": 0.43,
+          "id": 3341,
+          "displayName": "Dallas Neighborhood Market",
+          "storeType": {
+            "id": "4",
+            "displayName": "Neighborhood Market"
+          },
+          "address": {
+            "postalCode": "75204",
+            "address": "2305 N Central Expy",
+            "city": "Dallas",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.800647,
+            "longitude": -96.794125
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 4.76,
+          "id": 5823,
+          "displayName": "Dallas Supercenter",
+          "storeType": {
+            "id": "1",
+            "displayName": "Supercenter"
+          },
+          "address": {
+            "postalCode": "75231",
+            "address": "6185 Retail Rd",
+            "city": "Dallas",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "07:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.862849,
+            "longitude": -96.754838
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 5.68,
+          "id": 2667,
+          "displayName": "Dallas Supercenter",
+          "storeType": {
+            "id": "1",
+            "displayName": "Supercenter"
+          },
+          "address": {
+            "postalCode": "75228",
+            "address": "7401 Samuell Blvd",
+            "city": "Dallas",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.793803,
+            "longitude": -96.689232
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 5.95,
+          "id": 5889,
+          "displayName": "Dallas Supercenter",
+          "storeType": {
+            "id": "1",
+            "displayName": "Supercenter"
+          },
+          "address": {
+            "postalCode": "75220",
+            "address": "9410 Webb Chapel Rd",
+            "city": "Dallas",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "07:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.862217,
+            "longitude": -96.856976
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 6.55,
+          "id": 3015,
+          "displayName": "Dallas Neighborhood Market",
+          "storeType": {
+            "id": "4",
+            "displayName": "Neighborhood Market"
+          },
+          "address": {
+            "postalCode": "75227",
+            "address": "2827 S Buckner Blvd",
+            "city": "Dallas",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.759929,
+            "longitude": -96.684475
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 6.89,
+          "id": 5021,
+          "displayName": "Dallas Neighborhood Market",
+          "storeType": {
+            "id": "4",
+            "displayName": "Neighborhood Market"
+          },
+          "address": {
+            "postalCode": "75228",
+            "address": "2275 Gus Thomasson Rd",
+            "city": "Dallas",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.835963,
+            "longitude": -96.67637
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 6.9,
+          "id": 5147,
+          "displayName": "Dallas Supercenter",
+          "storeType": {
+            "id": "1",
+            "displayName": "Supercenter"
+          },
+          "address": {
+            "postalCode": "75211",
+            "address": "1521 N Cockrell Hill Rd",
+            "city": "Dallas",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.7625783,
+            "longitude": -96.8973313
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 8.19,
+          "id": 2427,
+          "displayName": "Dallas Supercenter",
+          "storeType": {
+            "id": "1",
+            "displayName": "Supercenter"
+          },
+          "address": {
+            "postalCode": "75243",
+            "address": "9301 Forest Ln",
+            "city": "Dallas",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.910853,
+            "longitude": -96.738831
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 8.3,
+          "id": 3014,
+          "displayName": "Dallas Supercenter",
+          "storeType": {
+            "id": "1",
+            "displayName": "Supercenter"
+          },
+          "address": {
+            "postalCode": "75232",
+            "address": "200 Short Blvd",
+            "city": "Dallas",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.6837453,
+            "longitude": -96.8253449
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 8.98,
+          "id": 1800,
+          "displayName": "Garland Supercenter",
+          "storeType": {
+            "id": "1",
+            "displayName": "Supercenter"
+          },
+          "address": {
+            "postalCode": "75041",
+            "address": "1801 Marketplace Dr",
+            "city": "Garland",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.8630502,
+            "longitude": -96.652042
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 9.01,
+          "id": 2105,
+          "displayName": "Dallas Supercenter",
+          "storeType": {
+            "id": "1",
+            "displayName": "Supercenter"
+          },
+          "address": {
+            "postalCode": "75244",
+            "address": "4122 L B J Fwy",
+            "city": "Dallas",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.921859,
+            "longitude": -96.840429
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 9.43,
+          "id": 5824,
+          "displayName": "Mesquite Neighborhood Market",
+          "storeType": {
+            "id": "4",
+            "displayName": "Neighborhood Market"
+          },
+          "address": {
+            "postalCode": "75149",
+            "address": "1951 Military Pkwy",
+            "city": "Mesquite",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "07:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.769394,
+            "longitude": -96.628613
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 10.13,
+          "id": 5624,
+          "displayName": "Farmers Branch Neighborhood Market",
+          "storeType": {
+            "id": "4",
+            "displayName": "Neighborhood Market"
+          },
+          "address": {
+            "postalCode": "75234",
+            "address": "13100 Josey Ln",
+            "city": "Farmers Branch",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "07:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.923531,
+            "longitude": -96.880021
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 10.32,
+          "id": 2976,
+          "displayName": "Mesquite Neighborhood Market",
+          "storeType": {
+            "id": "4",
+            "displayName": "Neighborhood Market"
+          },
+          "address": {
+            "postalCode": "75150",
+            "address": "915 N Town East Blvd",
+            "city": "Mesquite",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.813102,
+            "longitude": -96.609886
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 10.42,
+          "id": 4046,
+          "displayName": "Garland Neighborhood Market",
+          "storeType": {
+            "id": "4",
+            "displayName": "Neighborhood Market"
+          },
+          "address": {
+            "postalCode": "75040",
+            "address": "1855 S Garland Ave",
+            "city": "Garland",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.896593,
+            "longitude": -96.649544
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 10.56,
+          "id": 2974,
+          "displayName": "Richardson Neighborhood Market",
+          "storeType": {
+            "id": "4",
+            "displayName": "Neighborhood Market"
+          },
+          "address": {
+            "postalCode": "75081",
+            "address": "1501 Buckingham Rd",
+            "city": "Richardson",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.932529,
+            "longitude": -96.697251
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 10.93,
+          "id": 789,
+          "displayName": "Mesquite Supercenter",
+          "storeType": {
+            "id": "1",
+            "displayName": "Supercenter"
+          },
+          "address": {
+            "postalCode": "75149",
+            "address": "200 Us Highway 80 E",
+            "city": "Mesquite",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.788794,
+            "longitude": -96.599162
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 11,
+          "id": 1118,
+          "displayName": "Balch Springs Supercenter",
+          "storeType": {
+            "id": "1",
+            "displayName": "Supercenter"
+          },
+          "address": {
+            "postalCode": "75180",
+            "address": "12300 Lake June Rd",
+            "city": "Balch Springs",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.731829,
+            "longitude": -96.615424
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 11.14,
+          "id": 3406,
+          "displayName": "Dallas Supercenter",
+          "storeType": {
+            "id": "1",
+            "displayName": "Supercenter"
+          },
+          "address": {
+            "postalCode": "75248",
+            "address": "15220 Montfort Rd",
+            "city": "Dallas",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.95882,
+            "longitude": -96.816127
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 11.37,
+          "id": 3224,
+          "displayName": "Garland Supercenter",
+          "storeType": {
+            "id": "1",
+            "displayName": "Supercenter"
+          },
+          "address": {
+            "postalCode": "75043",
+            "address": "555 W Interstate 30",
+            "city": "Garland",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.842368,
+            "longitude": -96.597859
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 11.37,
+          "id": 8930,
+          "displayName": "Dallas Supercenter",
+          "storeType": {
+            "id": "1",
+            "displayName": "Supercenter"
+          },
+          "address": {
+            "postalCode": "75248",
+            "address": "15757 Coit Rd",
+            "city": "Dallas",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.963412,
+            "longitude": -96.770294
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 11.38,
+          "id": 2975,
+          "displayName": "Garland Neighborhood Market",
+          "storeType": {
+            "id": "4",
+            "displayName": "Neighborhood Market"
+          },
+          "address": {
+            "postalCode": "75043",
+            "address": "3959 Broadway Blvd",
+            "city": "Garland",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.864742,
+            "longitude": -96.606901
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 12.85,
+          "id": 2433,
+          "displayName": "Garland Neighborhood Market",
+          "storeType": {
+            "id": "4",
+            "displayName": "Neighborhood Market"
+          },
+          "address": {
+            "postalCode": "75040",
+            "address": "101 W Buckingham Rd",
+            "city": "Garland",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.931981,
+            "longitude": -96.631591
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 12.98,
+          "id": 880,
+          "displayName": "Irving Supercenter",
+          "storeType": {
+            "id": "1",
+            "displayName": "Supercenter"
+          },
+          "address": {
+            "postalCode": "75062",
+            "address": "4100 W Airport Fwy",
+            "city": "Irving",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.834833,
+            "longitude": -97.00636
+          },
+          "timeZone": "America/Chicago"
+        },
+        {
+          "distance": 13.42,
+          "id": 2649,
+          "displayName": "Irving Supercenter",
+          "storeType": {
+            "id": "1",
+            "displayName": "Supercenter"
+          },
+          "address": {
+            "postalCode": "75063",
+            "address": "1635 Market Place Blvd",
+            "city": "Irving",
+            "state": "TX",
+            "country": "US"
+          },
+          "operationalHours": {
+            "open24Hours": null,
+            "todayHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            },
+            "tomorrowHrs": {
+              "startHr": "06:00",
+              "endHr": "23:00",
+              "openFullDay": null
+            }
+          },
+          "geoPoint": {
+            "latitude": 32.920578,
+            "longitude": -96.967644
+          },
+          "timeZone": "America/Chicago"
+        }
+      ]
+    }
+  }
+}

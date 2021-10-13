@@ -1,0 +1,12 @@
+db:
+  host: 'remotemysql.com'
+  username: '68QBJdzmcp'
+  password: 'QhMFQb4PTk'
+  port: '3306'
+  database: '68QBJdzmcp'
+
+http:
+  host: 'walmart.p.rapidapi.com'
+  port: '443'
+  path: '/products/v2/get-details'
+  api-key: '3023a67861msh0eb707c9fd31682p12e9c9jsn4bd95787f3d4'

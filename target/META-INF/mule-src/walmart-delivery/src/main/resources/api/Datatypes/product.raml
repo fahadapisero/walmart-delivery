@@ -1,0 +1,23 @@
+#%RAML 1.0 DataType
+type: object
+properties:
+  manufacturerName   : string
+  productID          : number
+  productName        : string
+  productType        : string
+  pricePerUnit       : string
+  maxOrderLimit      : 
+    type :  integer
+    minimum : 1
+  availabilityStatus : string
+  sellers       : 
+    type: array
+    items:
+      properties:
+       sellerName            : string
+       sellerDisplayName     : string
+       sellerPhone           : number
+       sellerEmail	         : string
+       sellerId	             : string
+       sellerType	           : string
+

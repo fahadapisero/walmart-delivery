@@ -1,0 +1,77 @@
+{
+  "data": {
+    "productByProductIdHolidays": {
+      "offers": [
+        
+      ],
+      "productId": "11007c2bab77484baba",
+      "offerCount": 92,
+      "productAttributes": {
+        
+      },
+      "variantCategoryList": [
+        
+      ],
+      "transactableOfferCount": 81,
+      "variantList": [
+        
+      ],
+      "upc": "ut",
+      "priceRanges": {
+        
+      },
+      "bundleType": "autem",
+      "primaryProductId": "7bb90bed028f4ab6838",
+      "productSegment": "et",
+      "productTypeId": "8ada3ef5e0de4884be5",
+      "btvAvailable": false,
+      "usItemId": "1a611cc7c1f04200a8b",
+      "consumable": false,
+      "offerList": [
+        
+      ],
+      "sellerList": [
+        
+      ],
+      "regularItem": false,
+      "imageList": [
+        
+      ],
+      "productType": "Sed",
+      "status": "ab",
+      "": {
+        
+      }
+    },
+    "": {
+      
+    }
+  },
+  "errors": [
+    {
+      "timing": {
+        
+      },
+      "context": {
+        
+      },
+      "": {
+        
+      }
+    },
+    {
+      "timing": {
+        
+      },
+      "context": {
+        
+      },
+      "": {
+        
+      }
+    }
+  ],
+  "": {
+    
+  }
+}

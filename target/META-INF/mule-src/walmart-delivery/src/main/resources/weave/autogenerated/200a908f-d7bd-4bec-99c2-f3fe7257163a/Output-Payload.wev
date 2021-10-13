@@ -1,0 +1,14 @@
+%dw 2.0
+
+type auto_200a908f_d7bd_4bec_99c2_f3fe7257163a_Output_Payload = {
+  productID: Number, 
+  maxOrderLimit: Number, 
+  manufacturerName: String, 
+  availabilityStatus: String, 
+  productName: String, 
+  productType: String, 
+  sellers: Array<{    sellerDisplayName: String,     sellerId: String,     sellerPhone: Number,     sellerName: String,     sellerType: String,     sellerEmail: String,     _?: Any  }>, 
+  pricePerUnit: String, 
+  _?: Any
+}
+
