@@ -23,7 +23,6 @@ http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/m
 		<http:default-headers >
 		</http:default-headers>
 	</http:request-config>
-	<api-gateway:autodiscovery apiId="17345555" ignoreBasePath="true" doc:name="API Autodiscovery" doc:id="5cc3886e-bbc6-4211-90e1-4599c8c9fd41" flowRef="walmartdelivery-main" />
 	<error-handler name="globalError_Handler" doc:id="8b89930d-343f-4354-84e6-8e295f7fcdcd" >
 		<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="64a333a1-cf5d-4ecd-93d6-3472c7c5477b" type="ANY">
 			<set-payload value='#["System Encountered a Problem, Try after some time"]' doc:name="Set Payload" doc:id="553da35d-985c-473b-9e64-12a843a2cb54" />
