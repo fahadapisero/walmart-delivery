@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd ">
-    
-    
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd ">
     <flow name="walmartdelivery-main">
-        <http:listener doc:id="73fc5396-5eda-49e9-973d-54f3048f1606" config-ref="walmartdelivery-httpListenerConfig" path="/api/*">
-			<http:response statusCode="#[vars.httpStatus default 200]">
-				<http:headers ><![CDATA[#[vars.outboundHeaders default {}]]]></http:headers>
-			</http:response>
-			<http:error-response statusCode="#[vars.httpStatus default 200]">
-				<http:body ><![CDATA[#[payload]]]></http:body>
-				<http:headers ><![CDATA[#[vars.outboundHeaders default {}]]]></http:headers>
-			</http:error-response>
-		</http:listener>
+        <http:listener path="/api/*" config-ref="walmartdelivery-httpListenerConfig">
+            <http:response statusCode="#[vars.httpStatus default 200]">
+                <http:headers><![CDATA[#[vars.outboundHeaders default {}]]]></http:headers>
+            </http:response>
+            <http:error-response statusCode="#[vars.httpStatus default 500]">
+                <http:body><![CDATA[#[payload]]]></http:body>
+                <http:headers><![CDATA[#[vars.outboundHeaders default {}]]]></http:headers>
+            </http:error-response>
+        </http:listener>
         <apikit:router config-ref="walmartdelivery-config" />
         <error-handler>
             <on-error-propagate type="APIKIT:BAD_REQUEST">
@@ -95,13 +93,13 @@ output application/json
         </error-handler>
     </flow>
     <flow name="walmartdelivery-console">
-        <http:listener config-ref="walmartdelivery-httpListenerConfig" path="/console/*">
+        <http:listener path="/console/*" config-ref="walmartdelivery-httpListenerConfig">
             <http:response statusCode="#[vars.httpStatus default 200]">
-                <http:headers>#[vars.outboundHeaders default {}]</http:headers>
+                <http:headers><![CDATA[#[vars.outboundHeaders default {}]]]></http:headers>
             </http:response>
             <http:error-response statusCode="#[vars.httpStatus default 500]">
-                <http:body>#[payload]</http:body>
-                <http:headers>#[vars.outboundHeaders default {}]</http:headers>
+                <http:body><![CDATA[#[payload]]]></http:body>
+                <http:headers><![CDATA[#[vars.outboundHeaders default {}]]]></http:headers>
             </http:error-response>
         </http:listener>
         <apikit:console config-ref="walmartdelivery-config" />
@@ -122,15 +120,21 @@ output application/json
         </error-handler>
     </flow>
     <flow name="get:\productdetails:walmartdelivery-config">
-		<set-variable value="#[attributes.queryParams.usItemId]" doc:name="httpVar" doc:id="eb1828cb-7b28-419a-8c3f-f4e7ddd04eec" variableName="httpVar" />
-		<flow-ref doc:name="getProductDetailsFlow" doc:id="304bd637-bc58-430e-b62e-e6fc203f01c1" name="getProductDetailsFlow"/>
+        <set-variable value="#[attributes.queryParams.usItemId]" doc:name="httpVar" doc:id="f166dce6-4aa6-4ed6-b19e-e3493f25ed93" variableName="httpVar" />
+        <flow-ref doc:name="getProductDetailsFlow" doc:id="0e766ea6-073f-463e-a9ee-b33d12af328a" name="getProductDetailsFlow" />
     </flow>
     <flow name="get:\storedetails:walmartdelivery-config">
-        <set-variable value="#[attributes.queryParams.postalCode]" doc:name="httpVar" doc:id="e21286a3-618b-4168-b81a-f7823f108041" variableName="httpVar" />
-		<flow-ref doc:name="getStoreDetailsFlow" doc:id="5f5c9aa4-f7a8-480e-82e1-fc88fa7a49a3" name="getStoreDetailsFlow"/>
+        <set-variable value="#[attributes.queryParams.postalCode]" doc:name="httpVar" doc:id="fb7cb28a-47a7-4ba1-912a-93ab2004dfa7" variableName="httpVar" />
+        <flow-ref doc:name="getStoreDetailsFlow" doc:id="9172fb72-0440-441d-8cad-65f0f5fe2b38" name="getStoreDetailsFlow" />
+    </flow>
+    <flow name="get:\getinsertedproducts\(orderid):walmartdelivery-config">
+        <flow-ref doc:name="Flow Reference" doc:id="78768453-a189-446c-aec6-df271fc0b0b8" name="getInsertProductsByOrderIDFlow" />
     </flow>
     <flow name="post:\insertproduct:application\json:walmartdelivery-config">
-		<set-variable value="#[payload.order_id]" doc:name="orderID" doc:id="5bbfdc62-d371-41c5-81f4-7863e845c808" variableName="orderID"/>
-		<flow-ref doc:name="postProduct Flow" doc:id="69d5c2a1-f2cd-4675-b9dd-14fda6ae6b8c" name="postProduct"/>
+        <set-variable value="#[payload.order_id]" doc:name="orderID" doc:id="82f09a9e-2954-43e6-9576-5bed059132ab" variableName="orderID" />
+        <flow-ref doc:name="postProduct Flow" doc:id="f6043653-c291-4efb-a7f4-04772a54dc8e" name="postProduct" />
+    </flow>
+    <flow name="get:\getinsertedproducts:walmartdelivery-config">
+		<flow-ref doc:name="Flow Reference" doc:id="c8275c33-065d-4660-ac0c-9d154299853e" name="getInsertedProducts"/>
     </flow>
 </mule>

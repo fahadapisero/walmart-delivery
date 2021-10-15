@@ -1,0 +1,14 @@
+%dw 2.0
+
+type auto_317694f9_bb47_4495_82a1_708a50431a6f_Output_Payload = {
+  store_id: Number, 
+  quantity: Number, 
+  store_name: String, 
+  store_address: String, 
+  store_contact_number?: Number, 
+  product_type_id: Number, 
+  store_distance: Number, 
+  order_id: String, 
+  _?: Any
+}
+

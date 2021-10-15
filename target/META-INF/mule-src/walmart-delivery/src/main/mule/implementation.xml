@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:os="http://www.mulesoft.org/schema/mule/os" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
-	xmlns:db="http://www.mulesoft.org/schema/mule/db"
-	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+<mule xmlns:validation="http://www.mulesoft.org/schema/mule/validation" xmlns:os="http://www.mulesoft.org/schema/mule/os"
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
-http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd">
+http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd
+http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mule/validation/current/mule-validation.xsd">
 	
 	<flow name="getProductDetailsFlow" doc:id="200a908f-d7bd-4bec-99c2-f3fe7257163a" >
 		<http:request method="GET" doc:name="Walmart API Request" doc:id="6deb8dea-387d-42fe-9066-02f3a49a7009" config-ref="HTTP_Request_configuration" requestStreamingMode="NEVER" path="${http.path}">
@@ -139,5 +140,75 @@ VALUES(:order_id,:store_id,:store_name,:store_address,:store_distance,:store_con
 				<set-payload value='#["Product Already Inserted!"]' doc:name="Set Payload" doc:id="c98ba0f2-8a29-4a96-8e1c-79453a394a9c" />
 			</on-error-propagate>
 		</error-handler>
+	</flow>
+	<flow name="getInsertProductsByOrderIDFlow" doc:id="0ac7792f-ccd1-42b0-8fe6-135c42d9e629" >
+		<choice doc:name="Choice" doc:id="96bd9333-ccb1-44e5-8b6b-a0a6a8ccb21f" >
+			<when expression="#[attributes.uriParams.'orderid' == null]">
+				<flow-ref doc:name="Flow Reference" doc:id="c0db62ba-8db6-40c9-9223-43445c181cfe" name="getInsertedProducts" />
+			</when>
+			<otherwise>
+				<db:select doc:name="Select" doc:id="1991cec1-6a43-49fd-b164-093b21bf7e5b" config-ref="Database_Config">
+					<db:sql ><![CDATA[SELECT order_id,store_id,store_name,store_address,store_distance,store_contact_number,product_type_id,quantity 
+from products 
+where order_id = :order_id]]></db:sql>
+					<db:input-parameters ><![CDATA[#[order_id: attributes.uriParams.orderid]]]></db:input-parameters>
+				</db:select>
+				<ee:transform doc:name="Transform Message" doc:id="747d3609-e042-4dd0-8efb-b84f23cdfb73" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	store_id: payload[0].store_id,
+	quantity: payload[0].quantity,
+	store_name: payload[0].store_name,
+	store_address: payload[0].store_address,
+	store_contact_number: payload[0].store_contact_number,
+	product_type_id: payload[0].product_type_id,
+	store_distance: payload[0].store_distance,
+	order_id: payload[0].order_id
+}]]></ee:set-payload>
+					</ee:message>
+					<ee:variables >
+						<ee:set-variable variableName="selectResponse" ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	store_id: payload[0].store_id,
+	quantity: payload[0].quantity,
+	store_name: payload[0].store_name,
+	store_address: payload[0].store_address,
+	store_contact_number: payload[0].store_contact_number,
+	product_type_id: payload[0].product_type_id,
+	store_distance: payload[0].store_distance,
+	order_id: payload[0].order_id
+}]]></ee:set-variable>
+					</ee:variables>
+				</ee:transform>
+				<choice doc:name="Choice" doc:id="02494ff6-cea8-44e4-9ed4-9661ab14b1ee" >
+					<when expression="#[vars.selectResponse.store_id == null]">
+						<set-variable value="#[404]" doc:name="httpStatus" doc:id="77acbbb7-217a-41be-ad77-35b66750541c" variableName="httpStatus"/>
+						<set-payload value='#["No Details on that Order ID"]' doc:name="Set Payload" doc:id="30b3a6bd-4bd2-425b-9424-617b0cbffded" />
+					</when>
+					<otherwise >
+						<set-payload value="#[payload]" doc:name="Set Payload" doc:id="d319dad2-3508-42bc-9406-c5647edbe3f9" />
+					</otherwise>
+				</choice>
+			</otherwise>
+		</choice>
+	</flow>
+	<flow name="getInsertedProducts" doc:id="317694f9-bb47-4495-82a1-708a50431a6f" >
+		<db:select doc:name="Select" doc:id="f752c324-097c-476c-8f5e-414a7ca833c3" config-ref="Database_Config">
+			<db:sql ><![CDATA[SELECT * FROM products]]></db:sql>
+		</db:select>
+		<ee:transform doc:name="Transform Message" doc:id="8fd14ad5-bb1e-410b-b95a-c6f205757d11" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="13c3e117-eac2-4b3d-b569-dd1a2cd49ff3" />
 	</flow>
 </mule>
